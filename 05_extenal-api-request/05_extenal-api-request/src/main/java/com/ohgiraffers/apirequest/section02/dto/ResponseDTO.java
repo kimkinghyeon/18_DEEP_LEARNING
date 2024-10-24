@@ -1,4 +1,4 @@
-package com.ohgiraffers.apirequest.section01.dto;
+package com.ohgiraffers.apirequest.section02.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,5 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ResponseDTO {
 
-    private String result;
+    private String summary;
+    private String translated_summary;
+
 }

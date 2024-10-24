@@ -1,6 +1,5 @@
 package com.ohgiraffers.apirequest.section02;
 
-import com.ohgiraffers.apirequest.section02.dto.RequestDTO;
 import com.ohgiraffers.apirequest.section02.dto.ResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -20,20 +19,17 @@ import reactor.core.publisher.Mono;
 * */
 
 @RestController
-@RequestMapping("/translate")
+@RequestMapping("/translate/section02")
 @Slf4j
-public class TransactionController {
+public class TextTransactionController {
 
     private final TextService textService;
 
-    public TransactionController( TextService textService) {
+    public TextTransactionController(TextService textService) {
 
         this.textService = textService;
     }
 
-    // 생성자 주입
-
-    // WebClient를 사용하는 API 호출
     @PostMapping("/webclient")
     public Mono<ResponseDTO> translateByWebClient(@RequestBody String text) {
         log.info("번역[WebClient] Controller 요청 들어옴...");
@@ -41,7 +37,7 @@ public class TransactionController {
 
         // WebClient를 사용한 비동기 처리
         return textService.summarizeText(text)
-                .map(response -> new ResponseDTO(response));
+                .map(response -> new ResponseDTO(response.getSummary(), response.getTranslated_summary()));
     }
 }
 

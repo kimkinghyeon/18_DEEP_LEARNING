@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestDTO {
+public class TextInput {
 
     private String text;
-    private String lang;
 }
