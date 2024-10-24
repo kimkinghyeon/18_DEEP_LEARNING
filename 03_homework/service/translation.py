@@ -27,7 +27,7 @@ prefix = "summarize: "
 
 async def query_huggingface_api(payload):
     async with httpx.AsyncClient() as client:
-        response = await client.post(API_URL, headers=headers, json=payload)
+        response = await client.post(API_URL, headers=headers, json=payload, timeout=10.0)  # 10초 타임아웃
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail=response.json())
     return response.json()

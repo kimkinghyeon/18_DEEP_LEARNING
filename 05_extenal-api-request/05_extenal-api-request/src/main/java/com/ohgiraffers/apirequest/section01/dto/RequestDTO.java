@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseDTO {
+public class RequestDTO {
 
-    private String result;
+    private String text;
+    private String lang;
 }
